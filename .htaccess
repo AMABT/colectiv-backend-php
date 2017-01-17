@@ -1,0 +1,9 @@
+# Replace /malvavisco-php with your install directory, / if you are in root
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /malvavisco-php
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /malvavisco-php/index.php [L]
+</IfModule>

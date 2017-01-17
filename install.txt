@@ -1,0 +1,9 @@
+Install XAMPP with PHP 7.0
+
+Extract /malvavisco-php to /htdocs (folder in XAMPP)
+
+go to http://localhost/malvavisco-php
+
+if you change the folder name to something like /colectiv, replace "/malvavisco-php" in .htaccess and /config/env.php
+
+Import database from /migrate/database.sql
