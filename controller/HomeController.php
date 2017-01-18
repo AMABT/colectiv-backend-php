@@ -8,6 +8,14 @@ include_once REPOSITORY_FOLDER . 'UserRepository.php';
 class HomeController extends BaseController
 {
 
+    protected $usersRepo = null;
+
+    public function __construct()
+    {
+
+        $this->usersRepo = new UserRepository();
+    }
+
     /**
      * page must end with the word "Action"
      */
@@ -23,13 +31,35 @@ class HomeController extends BaseController
 
     public function getUsersAction()
     {
-        $usersRepo = new UserRepository();
 
-        $users = $usersRepo->getUsers();
+        $users = $this->usersRepo->getUsers();
 
-        $user = $usersRepo->getUserByNamePassword($users[0]->getName(), $users[0]->getName());
+        $user = $this->usersRepo->getUserByNamePassword($users[0]->getName(), $users[0]->getName());
         echo '<pre>';
         var_dump($user);
+    }
+
+    public function userAction($user, $pass)
+    {
+        var_dump($user, $pass);
+        die();
+    }
+
+    public function loginAction()
+    {
+
+        //if ($this->requestMethod() == 'POST') {
+
+        $request = $this->request();
+
+        var_dump($request);
+
+        //$user = $this->usersRepo->getUserByNamePassword($user, $pass);
+
+        //return $this->response($user->toArray());
+//        }
+//
+//        return $this->response("Method not implemented");
     }
 
 }

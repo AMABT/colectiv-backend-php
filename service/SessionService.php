@@ -30,7 +30,7 @@ class SessionService
      * Unset session
      * @param $name
      */
-    public static function unset($name)
+    public static function unsetVar($name)
     {
         unset($_SESSION[$name]);
     }

@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Required headers for REST
+ */
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Credentials: false');
+header('Access-Control-Max-Age: 86400');
+header('Access-Control-Allow-Headers: X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+
+
+/**
  * Main entry point for application
  */
 

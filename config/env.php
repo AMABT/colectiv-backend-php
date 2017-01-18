@@ -2,7 +2,7 @@
 
 $config['env'] = array(
     'base_url' => '/malvavisco-php',
-    'response_type' => 'text', // or json
+    'response_type' => 'json', // text | json
     'default_include' => array(
         // include this in index.php so it's visible everywhere
         SERVICE_FOLDER . 'ConfigService.php',

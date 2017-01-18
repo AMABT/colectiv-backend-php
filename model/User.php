@@ -104,4 +104,19 @@ class User
         $this->role = $role;
     }
 
+    /**
+     * This will return private variables too
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'email' => $this->getEmail(),
+            'role' => $this->getRole()
+        );
+    }
+
 }

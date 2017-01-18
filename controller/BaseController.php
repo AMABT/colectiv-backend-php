@@ -46,4 +46,23 @@ abstract class BaseController
 
         return $data;
     }
+
+    /**
+     * Return request data
+     */
+    protected function request()
+    {
+        $inputJSON = file_get_contents('php://input');
+        return json_decode($inputJSON, TRUE); //convert JSON into array
+    }
+
+    /**
+     * Return request method
+     *
+     * @return string GET | POST | PUT | DELETE
+     */
+    protected function requestMethod()
+    {
+        return $_SERVER['REQUEST_METHOD'];
+    }
 }
