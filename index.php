@@ -1,24 +1,18 @@
 <?php
 
 /**
- * Required headers for REST
- */
-header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Credentials: false');
-header('Access-Control-Max-Age: 86400');
-header('Access-Control-Allow-Headers: X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-
-
-/**
  * Main entry point for application
  */
 
-define('CONFIG_FOLDER', 'config/');
-define('CONTROLLER_FOLDER', 'controller/');
-define('MODEL_FOLDER', 'model/');
-define('REPOSITORY_FOLDER', 'repository/');
-define('SERVICE_FOLDER', 'service/');
+
+define('APP_FOLDER', __DIR__ . '/');
+define('CONFIG_FOLDER', APP_FOLDER . 'config/');
+define('CONTROLLER_FOLDER', APP_FOLDER . 'controller/');
+define('MODEL_FOLDER', APP_FOLDER . 'model/');
+define('REPOSITORY_FOLDER', APP_FOLDER . 'repository/');
+define('SERVICE_FOLDER', APP_FOLDER . 'service/');
+define('TEST_FOLDER', APP_FOLDER . 'test/');
+define('MIGRATE_FOLDER', APP_FOLDER . 'migrate/');
 
 include_once CONFIG_FOLDER . "env.php";
 include_once CONFIG_FOLDER . "routes.php";
@@ -31,6 +25,21 @@ include_once CONFIG_FOLDER . "routes.php";
 foreach ($config['env']['default_include'] as $file) {
     include_once $file;
 }
+
+if (defined('IS_TEST_ENV')) {
+    // stop execution because we are running tests
+    return;
+}
+
+/**
+ * Required headers for REST
+ */
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Credentials: false');
+header('Access-Control-Max-Age: 86400');
+header('Access-Control-Allow-Headers: X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+
 
 // get current url - ex: /malvavisco-php/user/add
 $url = $_SERVER['REQUEST_URI'];
@@ -98,6 +107,17 @@ if (empty($url) || $url == "/") {
 
 if (!empty($action)) {
 
+    $requireLogin = false;
+    $requireRole = null;
+
+    if (is_array($action)) {
+
+        $requireLogin = !empty($action['logged']);
+        $requireRole = !empty($action['role']) ? $action['role'] : null;
+
+        $action = $action['action'];
+    }
+
     $action = explode(":", $action);
 
     $controller = ucfirst($action[0]) . "Controller";
@@ -107,7 +127,10 @@ if (!empty($action)) {
     include_once CONTROLLER_FOLDER . $controller . ".php";
 
     // init route controller
+    /* @var $controller BaseController */
     $controller = new $controller();
+
+    $controller->checkLoggedAndRedirect($requireLogin, $requireRole);
 
     // TODO implement BaseController->checkLoggedAndRedirect() for routes
 

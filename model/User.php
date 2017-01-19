@@ -14,7 +14,7 @@ class User
      * With PDO driver, the constructor will be called AFTER the object variables are set
      */
 
-    protected $id;
+    protected $id = null;
 
     protected $name;
 
@@ -23,6 +23,26 @@ class User
     protected $email;
 
     protected $role;
+
+    /**
+     * User constructor - THIS IS CALLED AFTER PDO init
+     * @param $id
+     * @param $name
+     * @param $password
+     * @param $email
+     * @param $role
+     */
+    public function __construct($id = null, $name = null, $password = null, $email = null, $role = null)
+    {
+        // if it's not called from PDO
+        if ($this->id === null && $id !== null) {
+            $this->id = $id;
+            $this->name = $name;
+            $this->password = $password;
+            $this->email = $email;
+            $this->role = $role;
+        }
+    }
 
     /**
      * @return mixed

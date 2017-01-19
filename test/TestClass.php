@@ -2,5 +2,5 @@
 
 interface TestClass
 {
-    function run();
+    public function run();
 }

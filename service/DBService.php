@@ -4,11 +4,16 @@ class DBService
 {
 
     static $instance = null;
+    /* @var PDO */
     protected $conn = null;
 
     private function __construct()
     {
         $this->connect();
+
+        if (defined('IS_TEST_ENV')) {
+            $this->importTestData();
+        }
     }
 
     public static function getInstance()
@@ -18,6 +23,46 @@ class DBService
         }
 
         return self::$instance;
+    }
+
+    /**
+     * Import database structure defined in migrate/database.sql
+     * Get sql from migrate/test-data.sql and imports it in memory database
+     */
+    protected function importTestData()
+    {
+        // remove foreign keys
+        $stm = $this->conn->prepare("SET FOREIGN_KEY_CHECKS = 0");
+        $stm->execute();
+        $stm->closeCursor();
+
+        // drop all tables
+        $tables = $this->conn->prepare("SHOW TABLES");
+        $tables->execute();
+        if ($result = $tables->fetchAll()) {
+            foreach ($result as $row) {
+                $stm = $this->conn->prepare('DROP TABLE IF EXISTS ' . $row[0]);
+                $stm->execute();
+                $stm->closeCursor();
+            }
+        }
+        $tables->closeCursor();
+
+        $files = array(MIGRATE_FOLDER . 'database.sql', MIGRATE_FOLDER . 'test-data.sql');
+
+        foreach ($files as $filename) {
+
+            $testSQL = file_get_contents($filename);
+
+            $stm = $this->conn->prepare($testSQL);
+            $stm->execute();
+            $stm->closeCursor();
+        }
+
+        // set back foreign keys
+        $stm = $this->conn->prepare("SET FOREIGN_KEY_CHECKS = 1");
+        $stm->execute();
+        $stm->closeCursor();
     }
 
     /**
@@ -33,7 +78,7 @@ class DBService
         $username = ConfigService::getDB('user');
         $password = ConfigService::getDB('password');
         $driver = ConfigService::getDB('driver');
-        $database = ConfigService::getDB('database');
+        $database = defined('IS_TEST_ENV') ? ConfigService::getDB('database_test') : ConfigService::getDB('database');
 
         try {
             $this->conn = new PDO("$driver:host=$host;dbname=$database", $username, $password);
@@ -41,7 +86,7 @@ class DBService
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+            echo "Connection failed: " . $e->getMessage() . "\n";
         }
     }
 

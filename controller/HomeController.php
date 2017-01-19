@@ -48,18 +48,17 @@ class HomeController extends BaseController
     public function loginAction()
     {
 
-        //if ($this->requestMethod() == 'POST') {
+        if ($this->requestMethod() == 'POST') {
 
-        $request = $this->request();
+            $request = $this->request();
 
-        var_dump($request);
+            var_dump($request);
 
-        //$user = $this->usersRepo->getUserByNamePassword($user, $pass);
+            $user = $this->usersRepo->getUserByNamePassword($request->username, $request->password);
 
-        //return $this->response($user->toArray());
-//        }
-//
-//        return $this->response("Method not implemented");
+            return $this->response($user->toArray());
+        }
+
     }
 
 }

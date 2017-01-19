@@ -8,6 +8,8 @@ $config['env'] = array(
         SERVICE_FOLDER . 'ConfigService.php',
         SERVICE_FOLDER . 'DBService.php',
         SERVICE_FOLDER . 'SessionService.php',
+        SERVICE_FOLDER . 'AuthService.php',
         CONTROLLER_FOLDER . 'BaseController.php',
-    )
+    ),
+    'auth_header' => 'Bean-Auth'
 );

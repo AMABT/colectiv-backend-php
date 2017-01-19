@@ -5,5 +5,6 @@ $config['database'] = array(
     'user' => 'root',
     'password' => '',
     'driver' => 'mysql',
-    'database' => 'malvavisco'
+    'database' => 'malvavisco',
+    'database_test' => 'malvavisco-test',
 );
