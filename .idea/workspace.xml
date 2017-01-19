@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e30eb9-db3e-48de-adbd-9fcde559c561" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/emacs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/AuthService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/env.php" afterPath="$PROJECT_DIR$/config/env.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.php" afterPath="$PROJECT_DIR$/config/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/BaseController.php" afterPath="$PROJECT_DIR$/controller/BaseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/HomeController.php" afterPath="$PROJECT_DIR$/controller/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install.txt" afterPath="$PROJECT_DIR$/install.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migrate/database.sql" afterPath="$PROJECT_DIR$/migrate/database.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/User.php" afterPath="$PROJECT_DIR$/model/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/DBService.php" afterPath="$PROJECT_DIR$/service/DBService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/TestClass.php" afterPath="$PROJECT_DIR$/test/TestClass.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/run_tests.php" afterPath="$PROJECT_DIR$/test/run_tests.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test_home.php" afterPath="$PROJECT_DIR$/test/test_home.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -458,7 +442,7 @@
       <workItem from="1484655006217" duration="2906000" />
       <workItem from="1484689480648" duration="1466000" />
       <workItem from="1484695527033" duration="14146000" />
-      <workItem from="1484816413711" duration="6324000" />
+      <workItem from="1484816413711" duration="6407000" />
     </task>
     <task id="LOCAL-00001" summary="Fix route match, PHP 5 reserved keyword in SessionService.php, implement request and response in BaseController">
       <created>1484747368045</created>
@@ -474,15 +458,22 @@
       <option name="project" value="LOCAL" />
       <updated>1484748331460</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Setup tests">
+      <created>1484854400968</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1484854400968</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44497000" />
+    <option name="totallyTimeSpent" value="44580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="978" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -514,7 +505,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Fix route match, PHP 5 reserved keyword in SessionService.php, implement request and response in BaseController" />
     <MESSAGE value="Test framework" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test framework" />
+    <MESSAGE value="Setup tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
