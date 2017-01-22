@@ -218,7 +218,7 @@ ALTER TABLE `roles_permissions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name_unique` (`name`),
+  ADD UNIQUE KEY `name_unique` (`username`),
   ADD UNIQUE KEY `email_unique` (`email`);
 
 --
