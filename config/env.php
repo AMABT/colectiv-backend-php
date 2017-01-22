@@ -9,6 +9,7 @@ $config['env'] = array(
         SERVICE_FOLDER . 'DBService.php',
         SERVICE_FOLDER . 'SessionService.php',
         SERVICE_FOLDER . 'AuthService.php',
+        SERVICE_FOLDER . 'LogService.php',
         REPOSITORY_FOLDER . 'AbstractRepository.php',
         CONTROLLER_FOLDER . 'BaseController.php',
     ),

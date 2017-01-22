@@ -5,7 +5,7 @@
  */
 
 
-define('APP_FOLDER', __DIR__ . '/');
+define('APP_FOLDER', realpath(__DIR__) . '/');
 define('CONFIG_FOLDER', APP_FOLDER . 'config/');
 define('CONTROLLER_FOLDER', APP_FOLDER . 'controller/');
 define('MODEL_FOLDER', APP_FOLDER . 'model/');
@@ -14,7 +14,8 @@ define('SERVICE_FOLDER', APP_FOLDER . 'service/');
 define('TEST_FOLDER', APP_FOLDER . 'test/');
 define('MIGRATE_FOLDER', APP_FOLDER . 'migrate/');
 define('ASSETS_FOLDER', APP_FOLDER . 'assets/');
-define('DOCUMENTS_FOLDER', APP_FOLDER . 'documents/');
+define('DOCUMENTS_FOLDER', ASSETS_FOLDER . 'documents/');
+define('LOG_FOLDER', APP_FOLDER . 'logs/');
 
 include_once CONFIG_FOLDER . "env.php";
 include_once CONFIG_FOLDER . "routes.php";
@@ -93,16 +94,17 @@ if (empty($url) || $url == "/") {
 
                 // if it's not a match with the url and not a param too
                 if ($route_part[0] != ":" && $route_part != $url_array[$key]) {
+                    $action = null;
                     break;
-                }
+                } else {
+                    // save param - $route_part = ":userid" and $url_array[$key] = 20
+                    if ($route_part[0] == ":") {
+                        $action_args[] = $url_array[$key];
+                    }
 
-                // save param - $route_part = ":userid" and $url_array[$key] = 20
-                if ($route_part[0] == ":") {
-                    $action_args[] = $url_array[$key];
+                    // save route action - $action = Home:getUsers
+                    $action = $route_action;
                 }
-
-                // save route action - $action = Home:getUsers
-                $action = $route_action;
             }
         }
 
@@ -151,9 +153,4 @@ if (!empty($action)) {
     return;
 }
 
-?>
-
-<div style="text-align: center;">
-    <h1>404</h1>
-    <p>Route not found</p>
-</div>
+header("HTTP/1.0 404 Not Found");

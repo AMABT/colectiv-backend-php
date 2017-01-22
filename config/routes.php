@@ -21,4 +21,5 @@ $config['routes'] = array(
         'method' => 'POST',
         'logged' => true,
     ),
+    'document/testupload' => 'Document:testupload'
 );
