@@ -49,6 +49,23 @@ class DocumentRepository extends AbstractRepository
         return $documents;
     }
 
+    /**
+     * @param $fluxId integer
+     * @return Document[]
+     * @throws Exception documents.id, documents.id_user, documents.name, documents.location, documents.created_at
+     */
+    public function getDocumentsByFlux($fluxId)
+    {
+        $query = "select * from flux_documents join documents on flux_documents.id_document = documents.id where flux_documents.id_flux = ?";
+        $documents = $this->dbService->select($query, $this->documentClassName, array($fluxId));
+
+        if (count($documents) == 0) {
+            throw new Exception("Document/documents not found");
+        }
+
+        return $documents;
+    }
+
     public function update($where = array(), $data = array())
     {
         // TODO: Implement update() method.

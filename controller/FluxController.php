@@ -26,10 +26,16 @@ class FluxController extends BaseController
 
             LogService::info($request);
 
+            $idParentRole = null;
+
             try {
                 // send flux to next class of users
                 $idParentRole = $this->userRepo->getRoleParentId($this->user->getRole());
             } catch (Exception $e) {
+                // pass
+            }
+
+            if ($idParentRole === null) {
                 // this user role has no parent, keep flux to current user role
                 $idParentRole = $this->userRepo->getRoleId($this->user->getRole());
             }
@@ -37,8 +43,6 @@ class FluxController extends BaseController
             $flux = new Flux($request['name'], $request['description'], $this->user->getId(), $idParentRole);
 
             $fluxId = $this->fluxRepo->insert($flux);
-
-            LogService::info($fluxId);
 
             if (!empty($request['documents'])) {
 
@@ -96,10 +100,11 @@ class FluxController extends BaseController
                 $where['id_status'] = $statusId;
             }
 
-            $flux = $this->fluxRepo->get($where);
+            $fluxData = $this->fluxRepo->get($where);
 
-            foreach ($flux as $f) {
-                $result[] = $f->toArray();
+            foreach ($fluxData as $f) {
+
+                $result[] = $this->fluxToArray($f);
             }
 
         } catch (Exception $e) {
@@ -122,7 +127,8 @@ class FluxController extends BaseController
             ));
 
             foreach ($flux as $f) {
-                $result[] = $f->toArray();
+
+                $result[] = $this->fluxToArray($f);
             }
 
         } catch (Exception $e) {
@@ -136,11 +142,28 @@ class FluxController extends BaseController
     {
         try {
 
+            // TODO implement validation to check if user has the rights to see this flux
+
             $flux = $this->fluxRepo->get(array(
-                'id' => $fluxId
+                'flux.id' => $fluxId
             ))[0];
 
-            return $this->response($flux->toArray());
+            $flux = $flux->toArray();
+            $flux['documents'] = array();
+
+            try {
+
+                $documents = $this->docRepo->getDocumentsByFlux($flux['id']);
+
+                foreach ($documents as $doc) {
+                    $flux['documents'][] = $doc->toArray();
+                }
+
+            } catch (Exception $e) {
+                // no documents for this flux
+            }
+
+            return $this->response($flux);
 
         } catch (Exception $e) {
 
@@ -196,5 +219,18 @@ class FluxController extends BaseController
 
             return $this->errorResponse('Flux not found or you are not the creator of this flux');
         }
+    }
+
+    protected function fluxToArray($f)
+    {
+        $flux = $f->toArray();
+
+        $userInit = $this->userRepo->getUserById($f->getIdUserInit());
+        $role = $this->userRepo->getRoleById($f->getIdRoleCurrent());
+
+        $flux['user_init'] = $userInit->getUsername();
+        $flux['role_current'] = $role['name'];
+
+        return $flux;
     }
 }

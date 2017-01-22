@@ -72,7 +72,7 @@ class FluxRepository extends AbstractRepository
             throw new Exception("Flux status not found");
         }
 
-        return $status['id'];
+        return $status[0]['id'];
     }
 
     /**
@@ -126,7 +126,7 @@ class FluxRepository extends AbstractRepository
     {
         $where = self::whereToString($filter);
 
-        $query = "select flux.name, flux.description, flux.id_user_init, flux.id_user_current, flux.created_at, flux_status.name status from flux
+        $query = "select flux.id, flux.name, flux.description, flux.id_user_init, flux.id_role_current, flux.created_at, flux_status.name status from flux
                   left join flux_status on flux.id_status = flux_status.id" . $where;
 
         $flux = $this->dbService->select($query, $this->flowClassName, array_values($filter));

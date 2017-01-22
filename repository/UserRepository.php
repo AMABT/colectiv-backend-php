@@ -63,7 +63,7 @@ class UserRepository extends AbstractRepository
      */
     public function getRoleParentId($role)
     {
-        $this->getRole($role)['id_parent'];
+        return $this->getRole($role)['id_parent'];
     }
 
     /**
@@ -73,7 +73,7 @@ class UserRepository extends AbstractRepository
      */
     public function getRoleId($role)
     {
-        $this->getRole($role)['id_parent'];
+        return $this->getRole($role)['id'];
     }
 
     /**
@@ -85,6 +85,18 @@ class UserRepository extends AbstractRepository
     {
         $query = "select * from roles where name = ?";
         $role = $this->dbService->select($query, null, array($name));
+
+        if (count($role) == 0) {
+            throw new Exception("Role not found");
+        }
+
+        return $role[0];
+    }
+
+    public function getRoleById($roleId)
+    {
+        $query = "select * from roles where id = ?";
+        $role = $this->dbService->select($query, null, array($roleId));
 
         if (count($role) == 0) {
             throw new Exception("Role not found");

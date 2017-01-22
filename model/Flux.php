@@ -170,8 +170,8 @@ class Flux
             'id' => $this->getId(),
             'name' => $this->getName(),
             'description' => $this->getDescription(),
-            'id_user_init' => $this->getIdUserInit(),
-            'id_role_current' => $this->getIdRoleCurrent(),
+            //'id_user_init' => $this->getIdUserInit(),
+            //'id_role_current' => $this->getIdRoleCurrent(),
             'created_at' => $this->getCreatedAt(),
             'status' => $this->getStatus()
         );
