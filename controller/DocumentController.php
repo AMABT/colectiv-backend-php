@@ -63,12 +63,18 @@ class DocumentController extends BaseController
 
     public function getAllAction()
     {
-        $documents = $this->docRepo->getDocumentsByUser($this->user->getId());
-
         $result = array();
 
-        foreach ($documents as $doc) {
-            $result[] = $doc->toArray();
+        try {
+
+            $documents = $this->docRepo->getDocumentsByUser($this->user->getId());
+
+            foreach ($documents as $doc) {
+                $result[] = $doc->toArray();
+            }
+
+        } catch (Exception $e) {
+            // pass
         }
 
         return $this->response($result);

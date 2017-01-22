@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e30eb9-db3e-48de-adbd-9fcde559c561" name="Default" comment="Implement authentification">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+    <list default="true" id="b4e30eb9-db3e-48de-adbd-9fcde559c561" name="Default" comment="Implement document upload, delete, download for documents">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.php" afterPath="$PROJECT_DIR$/config/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/BaseController.php" afterPath="$PROJECT_DIR$/controller/BaseController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/DocumentController.php" afterPath="$PROJECT_DIR$/controller/DocumentController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/FluxController.php" afterPath="$PROJECT_DIR$/controller/FluxController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migrate/database.sql" afterPath="$PROJECT_DIR$/migrate/database.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/Document.php" afterPath="$PROJECT_DIR$/model/Document.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repository/DocumentRepository.php" afterPath="$PROJECT_DIR$/repository/DocumentRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/DBService.php" afterPath="$PROJECT_DIR$/service/DBService.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,18 +54,18 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            <state relative-caret-position="285">
+              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DocumentController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DocumentController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/DocumentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-733">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="-103">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,8 +84,8 @@
       <file leaf-file-name="DocumentRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="227">
+              <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
               <folding>
                 <marker date="1485116095000" expanded="true" signature="495:518" ph="select * fro... documents" />
                 <marker date="1485116095000" expanded="true" signature="972:996" ph="select users... users" />
@@ -102,7 +96,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FluxController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FluxController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/FluxController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -185,17 +189,17 @@
         <option value="$PROJECT_DIR$/service/LogService.php" />
         <option value="$PROJECT_DIR$/logs/error.txt" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/migrate/database.sql" />
         <option value="$PROJECT_DIR$/model/Document.php" />
         <option value="$PROJECT_DIR$/logs/info.txt" />
         <option value="$PROJECT_DIR$/repository/AbstractRepository.php" />
         <option value="$PROJECT_DIR$/service/DBService.php" />
         <option value="$PROJECT_DIR$/repository/DocumentRepository.php" />
-        <option value="$PROJECT_DIR$/controller/DocumentController.php" />
-        <option value="$PROJECT_DIR$/config/routes.php" />
         <option value="$PROJECT_DIR$/controller/BaseController.php" />
         <option value="$PROJECT_DIR$/controller/FluxController.php" />
+        <option value="$PROJECT_DIR$/controller/DocumentController.php" />
+        <option value="$PROJECT_DIR$/config/routes.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -496,7 +500,7 @@
       <workItem from="1484695527033" duration="14146000" />
       <workItem from="1484816413711" duration="7797000" />
       <workItem from="1485072933602" duration="15607000" />
-      <workItem from="1485112196743" duration="4186000" />
+      <workItem from="1485112196743" duration="5024000" />
     </task>
     <task id="LOCAL-00001" summary="Fix route match, PHP 5 reserved keyword in SessionService.php, implement request and response in BaseController">
       <created>1484747368045</created>
@@ -582,11 +586,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485112421800</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Implement document upload, delete, download for documents">
+      <created>1485116464642</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1485116464642</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65763000" />
+    <option name="totallyTimeSpent" value="66601000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -642,7 +653,8 @@
     <MESSAGE value="Implement CRUD on Users and finish DBService" />
     <MESSAGE value="Implement document upload" />
     <MESSAGE value="Upload documents" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upload documents" />
+    <MESSAGE value="Implement document upload, delete, download for documents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement document upload, delete, download for documents" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -929,14 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1036,40 +1040,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/DocumentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-733">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="34" column="38" lean-forward="false" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <marker date="1485116095000" expanded="true" signature="495:518" ph="select * fro... documents" />
-            <marker date="1485116095000" expanded="true" signature="972:996" ph="select users... users" />
-            <marker date="1485116095000" expanded="true" signature="1622:1644" ph="delete from " />
-            <marker date="1485116095000" expanded="true" signature="2041:2087" ph="insert into documents... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,6 +1064,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding>
+            <marker date="1485116095000" expanded="true" signature="495:518" ph="select * fro... documents" />
+            <marker date="1485116095000" expanded="true" signature="972:996" ph="select users... users" />
+            <marker date="1485116095000" expanded="true" signature="1622:1644" ph="delete from " />
+            <marker date="1485116095000" expanded="true" signature="2041:2087" ph="insert into documents... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/DocumentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>

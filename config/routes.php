@@ -17,7 +17,7 @@ $config['routes'] = array(
     ),
     'document/upload' => array(
         'action' => 'Document:upload',
-        'method' => 'PUT',
+        'method' => 'POST',
         'logged' => true,
     ),
     'document/getall' => array(
