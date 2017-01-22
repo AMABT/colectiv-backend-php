@@ -29,7 +29,18 @@ class FlowRepository
     public function getInactiveFlows(){
 
 
-        $flows =  $this->dbService->select("select * from flows where status = 0", $this->userClassName);
+        $flows =  $this->dbService->select("select * from flows where status = 0", $this->flowClassName);
+
+        if (count($flows) == 0) {
+            throw new Exception("Flows not found");
+        }
+
+        return $flows;
+    }
+
+    public function getUserFlow($userId) {
+
+        $flows = $this->dbService->select("select * from flows where p_user = ?", $this->flowClassName, array($userId));
 
         if (count($flows) == 0) {
             throw new Exception("Flows not found");

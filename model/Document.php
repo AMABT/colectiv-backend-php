@@ -16,6 +16,8 @@ class Document
 
     protected $id;
 
+    protected $id_user;
+
     protected $name;
 
     protected $location;
@@ -24,7 +26,58 @@ class Document
 
     protected $version;
 
-    protected $user;
+    protected $created_at;
+
+    /**
+     * Document constructor.
+     * @param $id_user
+     * @param $name
+     * @param $location
+     */
+    public function __construct($id_user, $name, $location)
+    {
+        $this->id_user = $id_user;
+        $this->name = $name;
+        $this->location = $location;
+        $this->status = Status::Draft;
+        $this->version = 1;
+        $this->created_at = date("d-m-Y");
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * @param mixed $id_user
+     */
+    public function setIdUser($id_user)
+    {
+        $this->id_user = $id_user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param mixed $created_at
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+
     /**
      * @return mixed
      */
@@ -107,19 +160,6 @@ class Document
         /**
      * @return mixed
      */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
 
 }
 
