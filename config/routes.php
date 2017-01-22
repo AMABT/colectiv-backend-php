@@ -7,7 +7,7 @@ $config['routes'] = array(
     'home' => 'Home:Home', // default / route, REQUIRED
     'dashboard/:section' => array(
         'logged' => true,
-        'role' => Role::Admin,
+        'role' => Role::SuperAdmin,
         'action' => 'Home:getUsers',
         'method' => 'POST'
     ),

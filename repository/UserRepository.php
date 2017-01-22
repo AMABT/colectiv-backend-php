@@ -2,7 +2,7 @@
 
 include_once MODEL_FOLDER . 'User.php';
 
-class UserRepository
+class UserRepository implements AbstractRepository
 {
 
     protected $dbService;
@@ -11,15 +11,6 @@ class UserRepository
     public function __construct()
     {
         $this->dbService = DBService::getInstance();
-    }
-
-    /**
-     * @return User[]
-     */
-    public function getUsers()
-    {
-
-        return $this->dbService->select("select * from users", $this->userClassName);
     }
 
     /**
@@ -32,13 +23,10 @@ class UserRepository
     {
         $password = md5($password);
 
-        $users = $this->dbService->select("select * from users where name = ? and password = ?", $this->userClassName, array($name, $password));
-
-        if (count($users) == 0) {
-            throw new Exception("User not found");
-        }
-
-        return $users[0];
+        return $this->get(array(
+            'username' => $name,
+            'password' => $password
+        ))[0];
     }
 
     /**
@@ -48,14 +36,51 @@ class UserRepository
      */
     public function getUserById($userId)
     {
-        $users = $this->dbService->select("select * from users where id = ?", $this->userClassName, array($userId));
-
-        if (count($users) == 0) {
-            throw new Exception("User not found");
-        }
-
-        return $users[0];
+        return $this->get(array(
+            'id' => $userId
+        ))[0];
 
     }
 
+    public function create($data = array())
+    {
+        // TODO: Implement create() method.
+    }
+
+    /**
+     * @param array $filter
+     * @return User[]
+     * @throws Exception
+     */
+    public function get($filter = array())
+    {
+        if (!empty($filter)) {
+            $where = [];
+            foreach ($filter as $key => $val) {
+                $where[] = $key . ' = ? ';
+            }
+            $where = ' where ' . implode(' and ', $where);
+        } else {
+            $where = '';
+        }
+
+        $query = "select users.id, users.username, users.password, users.email, roles.name role from users left join roles on users.id_role = roles.id " . $where;
+        $users = $this->dbService->select($query, $this->userClassName, array_values($filter));
+
+        if (count($users) == 0) {
+            throw new Exception("User/users not found");
+        }
+
+        return $users;
+    }
+
+    public function update($where = array(), $data = array())
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete($where = array())
+    {
+        // TODO: Implement delete() method.
+    }
 }

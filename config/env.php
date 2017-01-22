@@ -9,9 +9,10 @@ $config['env'] = array(
         SERVICE_FOLDER . 'DBService.php',
         SERVICE_FOLDER . 'SessionService.php',
         SERVICE_FOLDER . 'AuthService.php',
+        REPOSITORY_FOLDER . 'AbstractRepository.php',
         CONTROLLER_FOLDER . 'BaseController.php',
     ),
-    'auth_header' => 'Authentication',
+    'auth_header' => 'Authorization',
     'secret_key' => '0180i3hfnbu2bg9ug1hu9cb19ugcd1[i',
-    'token_expire_time' => 360, // seconds
+    'token_expire_time' => 3600, // seconds
 );

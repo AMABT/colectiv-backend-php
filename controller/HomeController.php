@@ -32,7 +32,7 @@ class HomeController extends BaseController
     public function getUsersAction()
     {
 
-        $users = $this->usersRepo->getUsers();
+        $users = $this->usersRepo->get();
 
 //        $user = $this->usersRepo->getUserByNamePassword($users[0]->getName(), $users[0]->getName());
 //        echo '<pre>';
@@ -55,15 +55,15 @@ class HomeController extends BaseController
     {
         $request = $this->request();
 
-        try {
+        //try {
             $user = $this->usersRepo->getUserByNamePassword($request['username'], $request['password']);
 
-            $this->authorize($user->getId(), $user->getName());
+            $this->authorize($user->getId(), $user->getUsername());
 
             return $this->response($user->toArray());
-        } catch (Exception $e) {
-            return $this->errorResponse("User not found");
-        }
+//        } catch (Exception $e) {
+//            return $this->errorResponse("User not found");
+//        }
 
     }
 

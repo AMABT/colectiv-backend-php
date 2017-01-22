@@ -38,7 +38,7 @@ header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Credentials: false');
 header('Access-Control-Max-Age: 86400');
-header('Access-Control-Allow-Headers: X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+header('Access-Control-Allow-Headers: X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, ' . ConfigService::getEnv('auth_header'));
 header('Access-Control-Expose-Headers: ' . ConfigService::getEnv('auth_header'));
 
 // For CORS, the browser will do a "preflight" to see if POST is allowed - in this case do nothing, the above headers are enough

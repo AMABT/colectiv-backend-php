@@ -16,7 +16,7 @@ class User
 
     protected $id = null;
 
-    protected $name;
+    protected $username;
 
     protected $password;
 
@@ -37,7 +37,7 @@ class User
         // if it's not called from PDO
         if ($this->id === null && $id !== null) {
             $this->id = $id;
-            $this->name = $name;
+            $this->username = $name;
             $this->password = $password;
             $this->email = $email;
             $this->role = $role;
@@ -63,17 +63,17 @@ class User
     /**
      * @return mixed
      */
-    public function getName()
+    public function getUsername()
     {
-        return $this->name;
+        return $this->username;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $username
      */
-    public function setName($name)
+    public function setUsername($username)
     {
-        $this->name = $name;
+        $this->username = $username;
     }
 
     /**
@@ -133,7 +133,7 @@ class User
     {
         return array(
             'id' => $this->getId(),
-            'name' => $this->getName(),
+            'name' => $this->getUsername(),
             'email' => $this->getEmail(),
             'role' => $this->getRole()
         );
