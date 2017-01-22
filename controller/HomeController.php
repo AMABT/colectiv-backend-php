@@ -34,9 +34,15 @@ class HomeController extends BaseController
 
         $users = $this->usersRepo->getUsers();
 
-        $user = $this->usersRepo->getUserByNamePassword($users[0]->getName(), $users[0]->getName());
-        echo '<pre>';
-        var_dump($user);
+//        $user = $this->usersRepo->getUserByNamePassword($users[0]->getName(), $users[0]->getName());
+//        echo '<pre>';
+//        var_dump($user);
+
+        $rUsers = array();
+        foreach ($users as $user) {
+            $rUsers[] = $user->toArray();
+        }
+        return $this->response($rUsers);
     }
 
     public function userAction($user, $pass)
@@ -47,16 +53,16 @@ class HomeController extends BaseController
 
     public function loginAction()
     {
+        $request = $this->request();
 
-        if ($this->requestMethod() == 'POST') {
+        try {
+            $user = $this->usersRepo->getUserByNamePassword($request['username'], $request['password']);
 
-            $request = $this->request();
-
-            var_dump($request);
-
-            $user = $this->usersRepo->getUserByNamePassword($request->username, $request->password);
+            $this->authorize($user->getId(), $user->getName());
 
             return $this->response($user->toArray());
+        } catch (Exception $e) {
+            return $this->errorResponse("User not found");
         }
 
     }

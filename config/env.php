@@ -11,5 +11,7 @@ $config['env'] = array(
         SERVICE_FOLDER . 'AuthService.php',
         CONTROLLER_FOLDER . 'BaseController.php',
     ),
-    'auth_header' => 'Bean-Auth'
+    'auth_header' => 'Authentication',
+    'secret_key' => '0180i3hfnbu2bg9ug1hu9cb19ugcd1[i',
+    'token_expire_time' => 360, // seconds
 );

@@ -14,45 +14,35 @@ abstract class BaseController
     private $token = null;
 
     /**
-     * If user is not logged in or current route required role is not a match, redirect to homepage
-     * @param $requireLogin
-     * @param $requireRole
-     * @param null $token
-     * @internal param $role
-     */
-    public function checkLoggedAndRedirect($requireLogin, $requireRole = null, $token = null)
-    {
-        if (!$this->checkLogged($requireLogin, $requireRole, $token)) {
-            // redirect to homepage if current user is not supposed to be here - maybe redirect to login would be better
-            header('Location: ' . ConfigService::get('routes')['home']);
-        }
-    }
-
-    /**
+     * @param $requiredMethod
      * @param $requireLogin
      * @param null $requireRole
-     * @param null $token
-     * @return bool
+     * @internal param null $token
      */
-    public function checkLogged($requireLogin, $requireRole = null, $token = null)
+    public function checkLoggedAndRedirect($requiredMethod, $requireLogin, $requireRole = null)
     {
+        if (!empty($requiredMethod) && $requiredMethod != $this->requestMethod()) {
+            header('HTTP/1.0 405 Method Not Allowed');
+            die();
+        }
+
         // requireLogin - check if token is valid
         if ($requireLogin) {
 
-            if (empty($token)) {
+            // get all request headers and look for token
+            $headers = getallheaders();
+            $authHeaderName = ConfigService::getEnv('auth_header');
 
-                // get all request headers and look for token
-                $headers = getallheaders();
-                $authHeaderName = ConfigService::getEnv('auth_header');
-
-                if (!empty($headers[$authHeaderName])) {
-                    $this->token = trim($headers[$authHeaderName]);
-                }
+            if (!empty($headers[$authHeaderName])) {
+                $this->token = trim($headers[$authHeaderName]);
             } else {
-                $this->token = $token;
+
+                // missing token
+                header('HTTP/1.0 400 Bad Request');
+                die();
             }
 
-            if (AuthService::validToken($this->token)) {
+            if (AuthService::isTokenValid($this->token)) {
 
                 // if token valid, get user id from token and search it in database
                 $userId = AuthService::getUserIdFromToken($this->token);
@@ -68,33 +58,45 @@ abstract class BaseController
 
             // check if user is valid
             if ($this->user === null || ($requireRole !== null && strtolower($this->user->getRole()) != strtolower($requireRole))) {
-
-                // redirect to homepage if current user is not supposed to be here - maybe redirect to login would be better
-                return false;
+                header('HTTP/1.0 401 Unauthorized');
+                die();
             }
         }
 
-        return true;
     }
 
-    // TODO maybe this is not the best place for this function, keep it here until login implemented
-    protected function logUser(User $user)
+    /**
+     * Authorize user
+     * @param $userId
+     * @param $username
+     */
+    protected function authorize($userId, $username)
     {
-        $this->user = $user;
-        SessionService::set('User', serialize($user));
+        $this->token = AuthService::generateToken($userId, $username);
     }
 
     protected function response($data)
     {
-        if ($this->token)
+        if ($this->token) {
             // set token to response header
             header(ConfigService::getEnv('auth_header') . ": " . $this->token);
+        }
 
         if (ConfigService::getEnv('response_type') == 'json') {
+
+            header('Content-Type: application/json');
+
             return json_encode($data);
         }
 
         return $data;
+    }
+
+    protected function errorResponse($data)
+    {
+        return $this->response(array(
+            'error' => $data
+        ));
     }
 
     /**

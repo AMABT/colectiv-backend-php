@@ -39,6 +39,12 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Credentials: false');
 header('Access-Control-Max-Age: 86400');
 header('Access-Control-Allow-Headers: X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+header('Access-Control-Expose-Headers: ' . ConfigService::getEnv('auth_header'));
+
+// For CORS, the browser will do a "preflight" to see if POST is allowed - in this case do nothing, the above headers are enough
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0);
+}
 
 
 // get current url - ex: /malvavisco-php/user/add
@@ -109,11 +115,13 @@ if (!empty($action)) {
 
     $requireLogin = false;
     $requireRole = null;
+    $requiredMethod = null;
 
     if (is_array($action)) {
 
         $requireLogin = !empty($action['logged']);
         $requireRole = !empty($action['role']) ? $action['role'] : null;
+        $requiredMethod = !empty($action['method']) ? $action['method'] : null;
 
         $action = $action['action'];
     }
@@ -130,7 +138,7 @@ if (!empty($action)) {
     /* @var $controller BaseController */
     $controller = new $controller();
 
-    $controller->checkLoggedAndRedirect($requireLogin, $requireRole);
+    $controller->checkLoggedAndRedirect($requiredMethod, $requireLogin, $requireRole);
 
     // TODO implement BaseController->checkLoggedAndRedirect() for routes
 
