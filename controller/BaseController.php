@@ -1,6 +1,7 @@
 <?php
 
 include_once MODEL_FOLDER . 'User.php';
+include_once REPOSITORY_FOLDER . 'UserRepository.php';
 
 /**
  * Abstract BaseController

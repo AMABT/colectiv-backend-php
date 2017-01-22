@@ -16,5 +16,9 @@ $config['routes'] = array(
         'method' => 'POST'
     ),
     'user/:name/:password' => 'Home:user',
-    //'api/users' =>
+    'document/upload' => array(
+        'action' => 'Document:upload',
+        'method' => 'POST',
+        'logged' => true,
+    ),
 );

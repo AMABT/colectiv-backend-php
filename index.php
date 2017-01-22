@@ -13,6 +13,8 @@ define('REPOSITORY_FOLDER', APP_FOLDER . 'repository/');
 define('SERVICE_FOLDER', APP_FOLDER . 'service/');
 define('TEST_FOLDER', APP_FOLDER . 'test/');
 define('MIGRATE_FOLDER', APP_FOLDER . 'migrate/');
+define('ASSETS_FOLDER', APP_FOLDER . 'assets/');
+define('DOCUMENTS_FOLDER', APP_FOLDER . 'documents/');
 
 include_once CONFIG_FOLDER . "env.php";
 include_once CONFIG_FOLDER . "routes.php";

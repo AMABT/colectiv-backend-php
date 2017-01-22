@@ -2,7 +2,7 @@
 
 include_once MODEL_FOLDER . 'Flow.php';
 
-class FlowRepository
+class FlowRepository extends AbstractRepository
 {
 
     protected $dbService;
@@ -50,5 +50,23 @@ class FlowRepository
     }
 
 
+    public function insert($data = array())
+    {
+        // TODO: Implement insert() method.
+    }
 
+    public function get($filter = array())
+    {
+        // TODO: Implement get() method.
+    }
+
+    public function update($where = array(), $data = array())
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete($where = array())
+    {
+        // TODO: Implement delete() method.
+    }
 }
