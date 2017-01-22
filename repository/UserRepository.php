@@ -37,7 +37,7 @@ class UserRepository implements AbstractRepository
     public function getUserById($userId)
     {
         return $this->get(array(
-            'id' => $userId
+            'users.id' => $userId
         ))[0];
 
     }
