@@ -116,18 +116,45 @@ class DBService
         return $result;
     }
 
-    public function insert()
+    /**
+     *
+     * @param $sql string example: INSERT INTO db_fruit (id, type, colour) VALUES (? ,? ,?)
+     * @param $params array example: array($newId, $name, $color)
+     * @throws PDOException
+     */
+    public function insert($sql, $params = array())
     {
-
+        $this->conn->prepare($sql);
+        // use exec() because no results are returned
+        $this->conn->execute($params);
     }
 
-    public function delete()
+    /**
+     * @param $sql string example: DELETE FROM MyGuests WHERE id=3
+     * @throws PDOException
+     */
+    public function delete($sql)
     {
+        // Prepare statement
+        $stmt = $this->conn->prepare($sql);
 
+        // execute the query
+        $stmt->execute();
     }
 
-    public function update()
+    /**
+     * @param $sql string example: UPDATE MyGuests SET lastname='Doe' WHERE id=2
+     * @return integer number of records UPDATED successfully
+     * @throws PDOException
+     */
+    public function update($sql)
     {
+        // Prepare statement
+        $stmt = $this->conn->prepare($sql);
 
+        // execute the query
+        $stmt->execute();
+
+        return $stmt->rowCount();
     }
 }

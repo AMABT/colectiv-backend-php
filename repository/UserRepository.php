@@ -2,7 +2,7 @@
 
 include_once MODEL_FOLDER . 'User.php';
 
-class UserRepository implements AbstractRepository
+class UserRepository extends AbstractRepository
 {
 
     protected $dbService;
@@ -42,9 +42,18 @@ class UserRepository implements AbstractRepository
 
     }
 
-    public function create($data = array())
+    public function insert($data = array())
     {
-        // TODO: Implement create() method.
+        $cols = implode(", ", array_keys($data));
+        $values = array();
+        foreach ($data as $v) {
+            $values[] = '?';
+        }
+        $values = implode(', ', $values);
+
+        $sql = "insert into users ($cols) values ($values)";
+
+        $this->dbService->insert($sql, array_values($data));
     }
 
     /**
@@ -54,15 +63,7 @@ class UserRepository implements AbstractRepository
      */
     public function get($filter = array())
     {
-        if (!empty($filter)) {
-            $where = [];
-            foreach ($filter as $key => $val) {
-                $where[] = $key . ' = ? ';
-            }
-            $where = ' where ' . implode(' and ', $where);
-        } else {
-            $where = '';
-        }
+        $where = self::whereToString($filter);
 
         $query = "select users.id, users.username, users.password, users.email, roles.name role from users left join roles on users.id_role = roles.id " . $where;
         $users = $this->dbService->select($query, $this->userClassName, array_values($filter));
@@ -76,11 +77,24 @@ class UserRepository implements AbstractRepository
 
     public function update($where = array(), $data = array())
     {
-        // TODO: Implement update() method.
+        $where = self::whereToString($where);
+        $update = self::updateToString($data);
+
+        $query = "update users set " . $update . " " . $where;
+
+        return $this->dbService->update($query);
     }
 
     public function delete($where = array())
     {
-        // TODO: Implement delete() method.
+        if (empty($where)) {
+            throw new Exception("Where clause empty, can't delete all users");
+        }
+
+        $where = self::whereToString($where);
+
+        $query = "delete from users " . $where;
+
+        return $this->dbService->delete($query);
     }
 }
