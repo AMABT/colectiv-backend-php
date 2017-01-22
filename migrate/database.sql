@@ -96,7 +96,7 @@ CREATE TABLE `flux_status` (
 INSERT INTO `flux_status` (`id`, `name`) VALUES
   (1, 'new'),
   (2, 'pending'),
-  (3, 'aproved'),
+  (3, 'approved'),
   (4, 'rejected');
 
 -- --------------------------------------------------------
