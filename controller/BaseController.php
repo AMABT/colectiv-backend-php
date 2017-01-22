@@ -10,6 +10,7 @@ include_once REPOSITORY_FOLDER . 'UserRepository.php';
 abstract class BaseController
 {
 
+    /* @var $user User */
     protected $user = null;
     private $request = null;
     private $token = null;
@@ -33,6 +34,8 @@ abstract class BaseController
             // get all request headers and look for token
             $headers = getallheaders();
             $authHeaderName = ConfigService::getEnv('auth_header');
+
+            // LogService::info($headers);
 
             if (!empty($headers[$authHeaderName])) {
                 $this->token = trim($headers[$authHeaderName]);

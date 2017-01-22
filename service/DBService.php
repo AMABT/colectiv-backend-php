@@ -124,22 +124,22 @@ class DBService
      */
     public function insert($sql, $params = array())
     {
-        $this->conn->prepare($sql);
+        $stm = $this->conn->prepare($sql);
         // use exec() because no results are returned
-        $this->conn->execute($params);
+        $stm->execute($params);
     }
 
     /**
      * @param $sql string example: DELETE FROM MyGuests WHERE id=3
-     * @throws PDOException
+     * @param array $params
      */
-    public function delete($sql)
+    public function delete($sql, $params = array())
     {
         // Prepare statement
         $stmt = $this->conn->prepare($sql);
 
         // execute the query
-        $stmt->execute();
+        $stmt->execute($params);
     }
 
     /**

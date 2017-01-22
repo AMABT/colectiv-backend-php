@@ -1,12 +1,4 @@
 <?php
-class Status
-{
-
-    const Draft = 'DRAFT';
-    const Finals = 'FINAL';
-    const Finalr = 'FINAL REVIZUIT';
-    const Locked = 'BLOCAT';
-}
 
 class Document
 {
@@ -22,10 +14,6 @@ class Document
 
     protected $location;
 
-    protected $status;
-
-    protected $version;
-
     protected $created_at;
 
     /**
@@ -34,49 +22,15 @@ class Document
      * @param $name
      * @param $location
      */
-    public function __construct($id_user, $name, $location)
+    public function __construct($id_user = null, $name = null, $location = null)
     {
-        $this->id_user = $id_user;
-        $this->name = $name;
-        $this->location = $location;
-        $this->status = Status::Draft;
-        $this->version = 1;
-        $this->created_at = date("d-m-Y");
+        if ($id_user != null) {
+            $this->id_user = $id_user;
+            $this->name = $name;
+            $this->location = $location;
+            $this->created_at = date("d-m-Y");
+        }
     }
-
-
-    /**
-     * @return mixed
-     */
-    public function getIdUser()
-    {
-        return $this->id_user;
-    }
-
-    /**
-     * @param mixed $id_user
-     */
-    public function setIdUser($id_user)
-    {
-        $this->id_user = $id_user;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param mixed $created_at
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->created_at = $created_at;
-    }
-
 
     /**
      * @return mixed
@@ -92,6 +46,22 @@ class Document
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * @param mixed $id_user
+     */
+    public function setIdUser($id_user)
+    {
+        $this->id_user = $id_user;
     }
 
     /**
@@ -127,39 +97,29 @@ class Document
     }
 
     /**
-     * @return mixed
+     * @return false|string
      */
-    public function getVersion()
+    public function getCreatedAt()
     {
-        return $this->version;
+        return $this->created_at;
     }
 
     /**
-     * @param mixed $version
+     * @param false|string $created_at
      */
-    public function setVersion($version)
+    public function setCreatedAt($created_at)
     {
-        $this->version = $version;
+        $this->created_at = $created_at;
     }
 
-    /**
-     * @return Status
-     */
-    public function getStatus()
+    public function toArray()
     {
-        return $this->status;
+        return array(
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'created_at' => $this->getCreatedAt()
+        );
     }
-
-    /**
-     * @param Status $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-        /**
-     * @return mixed
-     */
 
 }
 

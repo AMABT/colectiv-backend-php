@@ -29,33 +29,33 @@ class DocumentRepository extends AbstractRepository
     }
 
     /**
-     * @param $user
+     * @param $userId integer
+     * @return Document[]
+     */
+    public function getDocumentsByUser($userId)
+    {
+        return $this->get(array(
+            'id_user' => $userId
+        ));
+    }
+
+    /**
+     * @param array $filter
      * @return Document[]
      * @throws Exception
      */
-    public function getDocumentsByUser($user)
+    public function get($filter = array())
     {
-        $user = $user;
+        $where = self::whereToString($filter);
 
-
-        $documents = $this->dbService->select("select * from documents where p_user = ?", $this->documentClassName, array($user));
+        $query = "select * from documents " . $where;
+        $documents = $this->dbService->select($query, $this->documentClassName, array_values($filter));
 
         if (count($documents) == 0) {
-            throw new Exception("Documents not found");
+            throw new Exception("Document/documents not found");
         }
 
         return $documents;
-    }
-
-
-    public function create($data = array())
-    {
-        // TODO: Implement create() method.
-    }
-
-    public function get($filter = array())
-    {
-        // TODO: Implement get() method.
     }
 
     public function update($where = array(), $data = array())
@@ -65,11 +65,31 @@ class DocumentRepository extends AbstractRepository
 
     public function delete($where = array())
     {
-        // TODO: Implement delete() method.
+        if (empty($where)) {
+            throw new Exception("Where clause empty, can't delete all users");
+        }
+
+        $where_string = self::whereToString($where);
+
+        $query = "delete from documents " . $where_string;
+
+        return $this->dbService->delete($query, array_values($where));
     }
 
+    /**
+     * @param array $data
+     */
     public function insert($data = array())
     {
-        // TODO: Implement insert() method.
+        $cols = implode(", ", array_keys($data));
+        $values = array();
+        foreach ($data as $v) {
+            $values[] = '?';
+        }
+        $values = implode(', ', $values);
+
+        $sql = "insert into documents ($cols) values ($values)";
+
+        $this->dbService->insert($sql, array_values($data));
     }
 }

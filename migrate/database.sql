@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `name` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL,
   `status` varchar(30) NOT NULL DEFAULT 'DRAFT',
   `version` int(11) NOT NULL DEFAULT '1',

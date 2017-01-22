@@ -12,24 +12,6 @@ class DocumentController extends BaseController
         $this->docRepo = new DocumentRepository();
     }
 
-    public function testuploadAction()
-    {
-        $uploads_dir = DOCUMENTS_FOLDER;
-
-        $tmp_name = APP_FOLDER . 'Archive.zip';
-        $name = 'Archive.zip';
-
-        echo '<pre>';
-        var_dump($tmp_name);
-        var_dump($uploads_dir . $name);
-
-        if (copy($tmp_name, $uploads_dir . $name)) {
-            echo 'success';
-        } else {
-            echo 'fail';
-        }
-    }
-
     public function uploadAction()
     {
         $uploads_dir = DOCUMENTS_FOLDER;
@@ -41,12 +23,23 @@ class DocumentController extends BaseController
                 $tmp_name = $_FILES["file"]["tmp_name"];
                 $name = $_FILES["file"]["name"];
 
-                if (!copy($tmp_name, $uploads_dir . $name)) {
-                    //LogService::info('Upload complete ' . $name . ' ' . "$uploads_dir$name");
+                $location = $this->user->getId() . '-' . (time() % 1000) . '-' . $name;
+
+                if (!copy($tmp_name, $uploads_dir . $location)) {
+
                     return $this->errorResponse(array(
                         'status' => 'file not uploaded'
                     ));
                 }
+
+                $this->docRepo->insert(array(
+                    'id_user' => $this->user->getId(),
+                    'name' => $name,
+                    'location' => $location,
+                    'created_at' => date("Y-m-d H:i:s")
+                ));
+
+                // LogService::info('Upload complete ' . $name . ' ' . $location);
 
                 return $this->response(array(
                     'status' => 'ok'
@@ -66,5 +59,57 @@ class DocumentController extends BaseController
             'status' => 'no file sent'
         ));
 
+    }
+
+    public function getAllAction()
+    {
+        $documents = $this->docRepo->getDocumentsByUser($this->user->getId());
+
+        $result = array();
+
+        foreach ($documents as $doc) {
+            $result[] = $doc->toArray();
+        }
+
+        return $this->response($result);
+    }
+
+    public function deleteAction($documentId)
+    {
+        try {
+            $document = $this->docRepo->get(array(
+                'id' => $documentId
+            ))[0];
+
+            // delete from disk
+            unlink(DOCUMENTS_FOLDER . $document->getLocation());
+
+            // delete from db
+            $this->docRepo->delete(array(
+                'id' => $document->getId()
+            ));
+
+            return $this->response(array(
+                'status' => 'success'
+            ));
+
+        } catch (Exception $e) {
+
+            return $this->errorResponse('Document not found');
+        }
+    }
+
+    public function downloadAction($documentId)
+    {
+        $document = $this->docRepo->get(array(
+            'id' => $documentId
+        ))[0];
+
+        $file_url = DOCUMENTS_FOLDER . $document->getLocation();
+
+        header('Content-Type: application/octet-stream');
+        header("Content-Transfer-Encoding: Binary");
+        header("Content-disposition: attachment; filename=\"" . basename($document->getName()) . "\"");
+        readfile($file_url);
     }
 }
