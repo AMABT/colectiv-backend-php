@@ -2,7 +2,7 @@
 
 abstract class AbstractRepository
 {
-    abstract public function insert($data = array());
+    abstract public function insert($data);
 
     abstract public function get($filter = array());
 

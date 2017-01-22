@@ -106,13 +106,18 @@ class DBService
      * @param array $params
      * @return ArrayObject
      */
-    public function select($sql, $modelClassName, $params = array())
+    public function select($sql, $modelClassName = null, $params = array())
     {
         $sth = $this->conn->prepare($sql);
         $sth->execute($params);
 
-        // transform array to $modelClassName[]
-        $result = $sth->fetchAll(PDO::FETCH_CLASS, $modelClassName);
+        if ($modelClassName === null) {
+            // return basic array
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            // transform array to $modelClassName[]
+            $result = $sth->fetchAll(PDO::FETCH_CLASS, $modelClassName);
+        }
         return $result;
     }
 
@@ -120,6 +125,7 @@ class DBService
      *
      * @param $sql string example: INSERT INTO db_fruit (id, type, colour) VALUES (? ,? ,?)
      * @param $params array example: array($newId, $name, $color)
+     * @return string last inserted id
      * @throws PDOException
      */
     public function insert($sql, $params = array())
@@ -127,11 +133,13 @@ class DBService
         $stm = $this->conn->prepare($sql);
         // use exec() because no results are returned
         $stm->execute($params);
+
+        return $this->conn->lastInsertId();
     }
 
     /**
-     * @param $sql string example: DELETE FROM MyGuests WHERE id=3
-     * @param array $params
+     * @param $sql string example: DELETE FROM MyGuests WHERE id = ?
+     * @param array $params array()
      */
     public function delete($sql, $params = array())
     {

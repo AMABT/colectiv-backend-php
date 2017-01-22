@@ -20,15 +20,6 @@ class DocumentRepository extends AbstractRepository
     }
 
     /**
-     * @return Document[]
-     */
-    public function getDocuments()
-    {
-
-        return $this->dbService->select("select * from documents", $this->userClassName);
-    }
-
-    /**
      * @param $userId integer
      * @return Document[]
      */
@@ -77,10 +68,17 @@ class DocumentRepository extends AbstractRepository
     }
 
     /**
-     * @param array $data
+     * @param Document $data
      */
-    public function insert($data = array())
+    public function insert($data)
     {
+        $data = array(
+            'id_user' => $data->getIdUser(),
+            'name' => $data->getName(),
+            'location' => $data->getLocation(),
+            'created_at' => $data->getCreatedAt()
+        );
+
         $cols = implode(", ", array_keys($data));
         $values = array();
         foreach ($data as $v) {

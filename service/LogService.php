@@ -20,6 +20,6 @@ class LogService
 
     protected static function writeLog($message, $type)
     {
-        file_put_contents(LOG_FOLDER . $type . '.txt', date('l jS F Y h:i:s') . ': ' . print_r($message, true) . "\n", FILE_APPEND);
+        file_put_contents(LOG_FOLDER . $type . '.txt', date("Y-m-d H:i:s") . ': ' . print_r($message, true) . "\n", FILE_APPEND);
     }
 }

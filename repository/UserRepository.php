@@ -57,6 +57,43 @@ class UserRepository extends AbstractRepository
     }
 
     /**
+     * @param $role string
+     * @return integer
+     * @throws Exception
+     */
+    public function getRoleParentId($role)
+    {
+        $this->getRole($role)['id_parent'];
+    }
+
+    /**
+     * @param $role string
+     * @return integer
+     * @throws Exception
+     */
+    public function getRoleId($role)
+    {
+        $this->getRole($role)['id_parent'];
+    }
+
+    /**
+     * @param $name string
+     * @return array
+     * @throws Exception
+     */
+    public function getRole($name)
+    {
+        $query = "select * from roles where name = ?";
+        $role = $this->dbService->select($query, null, array($name));
+
+        if (count($role) == 0) {
+            throw new Exception("Role not found");
+        }
+
+        return $role[0];
+    }
+
+    /**
      * @param array $filter
      * @return User[]
      * @throws Exception

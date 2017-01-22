@@ -24,11 +24,11 @@ class Document
      */
     public function __construct($id_user = null, $name = null, $location = null)
     {
-        if ($id_user != null) {
+        if ($id_user !== null) {
             $this->id_user = $id_user;
             $this->name = $name;
             $this->location = $location;
-            $this->created_at = date("d-m-Y");
+            $this->created_at = date("Y-m-d H:i:s");
         }
     }
 

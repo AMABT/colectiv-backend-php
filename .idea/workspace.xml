@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e30eb9-db3e-48de-adbd-9fcde559c561" name="Default" comment="Implement document upload, delete, download for documents">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="b4e30eb9-db3e-48de-adbd-9fcde559c561" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/model/Flow.php" afterPath="$PROJECT_DIR$/model/Flux.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/repository/FlowRepository.php" afterPath="$PROJECT_DIR$/repository/FluxRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.php" afterPath="$PROJECT_DIR$/config/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/DocumentController.php" afterPath="$PROJECT_DIR$/controller/DocumentController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/FluxController.php" afterPath="$PROJECT_DIR$/controller/FluxController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/Document.php" afterPath="$PROJECT_DIR$/model/Document.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repository/AbstractRepository.php" afterPath="$PROJECT_DIR$/repository/AbstractRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repository/DocumentRepository.php" afterPath="$PROJECT_DIR$/repository/DocumentRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repository/UserRepository.php" afterPath="$PROJECT_DIR$/repository/UserRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/DBService.php" afterPath="$PROJECT_DIR$/service/DBService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/LogService.php" afterPath="$PROJECT_DIR$/service/LogService.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,18 +42,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/BaseController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+            <state relative-caret-position="225">
+              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -54,53 +52,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controller/DocumentController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-103">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="34" column="38" lean-forward="false" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-              <folding>
-                <marker date="1485116095000" expanded="true" signature="495:518" ph="select * fro... documents" />
-                <marker date="1485116095000" expanded="true" signature="972:996" ph="select users... users" />
-                <marker date="1485116095000" expanded="true" signature="1622:1644" ph="delete from " />
-                <marker date="1485116095000" expanded="true" signature="2041:2087" ph="insert into documents... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+            <state relative-caret-position="662">
+              <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -109,18 +62,8 @@
       <file leaf-file-name="FluxController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/FluxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/repository/AbstractRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="-255">
+              <caret line="50" column="73" lean-forward="true" selection-start-line="50" selection-start-column="73" selection-end-line="50" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -129,10 +72,72 @@
       <file leaf-file-name="DBService.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/DBService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="135" column="35" lean-forward="false" selection-start-line="135" selection-start-column="35" selection-end-line="135" selection-end-column="35" />
+            <state relative-caret-position="317">
+              <caret line="127" column="38" lean-forward="false" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
               <folding>
-                <marker date="1485116068000" expanded="true" signature="1041:1062" ph="DROP TABLE I... " />
+                <marker date="1485125193000" expanded="true" signature="1041:1062" ph="DROP TABLE I... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/repository/UserRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+              <folding>
+                <marker date="1485122271000" expanded="true" signature="1074:1116" ph="insert into users... " />
+                <marker date="1485122271000" expanded="true" signature="1712:1746" ph="select * fro... roles" />
+                <marker date="1485122271000" expanded="true" signature="2153:2286" ph="select users... users" />
+                <marker date="1485122271000" expanded="true" signature="2707:2723" ph="update users... " />
+                <marker date="1485122271000" expanded="true" signature="2707:2724" ph="update users... " />
+                <marker date="1485122271000" expanded="true" signature="2707:2737" ph="update users... " />
+                <marker date="1485122271000" expanded="true" signature="2707:2740" ph="update users... " />
+                <marker date="1485122271000" expanded="true" signature="3044:3061" ph="delete from " />
+                <marker date="1485122271000" expanded="true" signature="3044:3062" ph="delete from " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flux.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/Flux.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="39" column="132" lean-forward="true" selection-start-line="39" selection-start-column="132" selection-end-line="39" selection-end-column="132" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FluxRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/repository/FluxRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="138" column="5" lean-forward="false" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
+              <folding>
+                <marker date="1485125422000" expanded="true" signature="1255:1295" ph="select * fro... flux_status" />
+                <marker date="1485125422000" expanded="true" signature="2267:2308" ph="insert into flux... " />
+                <marker date="1485125422000" expanded="true" signature="2573:2640" ph="insert into flux_documents... " />
+                <marker date="1485125422000" expanded="true" signature="2935:3062" ph="select flux.... flux" />
+                <marker date="1485125422000" expanded="true" signature="2935:3064" ph="select flux.... flux" />
+                <marker date="1485125422000" expanded="true" signature="2935:3137" ph="select flux.... flux" />
+                <marker date="1485125422000" expanded="true" signature="2935:3184" ph="select flux.... flux" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DocumentRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-313">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <marker date="1485125600000" expanded="true" signature="791:815" ph="select users... users" />
+                <marker date="1485125600000" expanded="true" signature="1441:1463" ph="delete from " />
+                <marker date="1485125600000" expanded="true" signature="2071:2117" ph="insert into documents... " />
               </folding>
             </state>
           </provider>
@@ -150,9 +155,11 @@
       <find>var_du</find>
       <find>documents</find>
       <find>info</find>
+      <find>flows</find>
     </findStrings>
     <replaceStrings>
       <replace>md5</replace>
+      <replace>flux</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -181,25 +188,28 @@
         <option value="$PROJECT_DIR$/service/AuthService.php" />
         <option value="$PROJECT_DIR$/model/User.php" />
         <option value="$PROJECT_DIR$/controller/HomeController.php" />
-        <option value="$PROJECT_DIR$/repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/controller/UsersController.php" />
-        <option value="$PROJECT_DIR$/repository/FlowRepository.php" />
         <option value="$PROJECT_DIR$/controller/DocumentsController.php" />
         <option value="$PROJECT_DIR$/config/env.php" />
-        <option value="$PROJECT_DIR$/service/LogService.php" />
         <option value="$PROJECT_DIR$/logs/error.txt" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/migrate/database.sql" />
-        <option value="$PROJECT_DIR$/model/Document.php" />
-        <option value="$PROJECT_DIR$/logs/info.txt" />
-        <option value="$PROJECT_DIR$/repository/AbstractRepository.php" />
-        <option value="$PROJECT_DIR$/service/DBService.php" />
-        <option value="$PROJECT_DIR$/repository/DocumentRepository.php" />
         <option value="$PROJECT_DIR$/controller/BaseController.php" />
-        <option value="$PROJECT_DIR$/controller/FluxController.php" />
-        <option value="$PROJECT_DIR$/controller/DocumentController.php" />
-        <option value="$PROJECT_DIR$/config/routes.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/repository/FlowRepository.php" />
+        <option value="$PROJECT_DIR$/model/Flow.php" />
+        <option value="$PROJECT_DIR$/repository/AbstractRepository.php" />
+        <option value="$PROJECT_DIR$/model/Document.php" />
+        <option value="$PROJECT_DIR$/service/LogService.php" />
+        <option value="$PROJECT_DIR$/repository/UserRepository.php" />
+        <option value="$PROJECT_DIR$/controller/DocumentController.php" />
+        <option value="$PROJECT_DIR$/model/Flux.php" />
+        <option value="$PROJECT_DIR$/config/routes.php" />
+        <option value="$PROJECT_DIR$/logs/info.txt" />
+        <option value="$PROJECT_DIR$/service/DBService.php" />
+        <option value="$PROJECT_DIR$/controller/FluxController.php" />
+        <option value="$PROJECT_DIR$/repository/FluxRepository.php" />
+        <option value="$PROJECT_DIR$/repository/DocumentRepository.php" />
       </list>
     </option>
   </component>
@@ -500,7 +510,7 @@
       <workItem from="1484695527033" duration="14146000" />
       <workItem from="1484816413711" duration="7797000" />
       <workItem from="1485072933602" duration="15607000" />
-      <workItem from="1485112196743" duration="5024000" />
+      <workItem from="1485112196743" duration="13026000" />
     </task>
     <task id="LOCAL-00001" summary="Fix route match, PHP 5 reserved keyword in SessionService.php, implement request and response in BaseController">
       <created>1484747368045</created>
@@ -593,11 +603,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485116464642</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fix documents crud">
+      <created>1485117289747</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1485117289747</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66601000" />
+    <option name="totallyTimeSpent" value="74603000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -616,6 +633,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36413643" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -626,7 +644,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -654,7 +671,8 @@
     <MESSAGE value="Implement document upload" />
     <MESSAGE value="Upload documents" />
     <MESSAGE value="Implement document upload, delete, download for documents" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement document upload, delete, download for documents" />
+    <MESSAGE value="Fix documents crud" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix documents crud" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -668,14 +686,15 @@
         <state relative-caret-position="240">
           <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
-            <marker date="1485092275000" expanded="true" signature="1074:1116" ph="insert into users... " />
-            <marker date="1485092275000" expanded="true" signature="1394:1527" ph="select users... users" />
-            <marker date="1485092275000" expanded="true" signature="1948:1964" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1965" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1978" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1981" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="2285:2302" ph="delete from " />
-            <marker date="1485092275000" expanded="true" signature="2285:2303" ph="delete from " />
+            <marker date="1485122271000" expanded="true" signature="1074:1116" ph="insert into users... " />
+            <marker date="1485122271000" expanded="true" signature="1712:1746" ph="select * fro... roles" />
+            <marker date="1485122271000" expanded="true" signature="2153:2286" ph="select users... users" />
+            <marker date="1485122271000" expanded="true" signature="2707:2723" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2724" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2737" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2740" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="3044:3061" ph="delete from " />
+            <marker date="1485122271000" expanded="true" signature="3044:3062" ph="delete from " />
           </folding>
         </state>
       </provider>
@@ -731,7 +750,7 @@
         <state relative-caret-position="1035">
           <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
-            <marker date="1485116068000" expanded="true" signature="1041:1062" ph="DROP TABLE I... " />
+            <marker date="1485125193000" expanded="true" signature="1041:1062" ph="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
@@ -749,14 +768,15 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1485092275000" expanded="true" signature="1074:1116" ph="insert into users... " />
-            <marker date="1485092275000" expanded="true" signature="1394:1527" ph="select users... users" />
-            <marker date="1485092275000" expanded="true" signature="1948:1964" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1965" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1978" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1981" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="2285:2302" ph="delete from " />
-            <marker date="1485092275000" expanded="true" signature="2285:2303" ph="delete from " />
+            <marker date="1485122271000" expanded="true" signature="1074:1116" ph="insert into users... " />
+            <marker date="1485122271000" expanded="true" signature="1712:1746" ph="select * fro... roles" />
+            <marker date="1485122271000" expanded="true" signature="2153:2286" ph="select users... users" />
+            <marker date="1485122271000" expanded="true" signature="2707:2723" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2724" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2737" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2740" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="3044:3061" ph="delete from " />
+            <marker date="1485122271000" expanded="true" signature="3044:3062" ph="delete from " />
           </folding>
         </state>
       </provider>
@@ -860,6 +880,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -883,6 +904,7 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="225">
             <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -896,18 +918,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Flow.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/migrate/malvavisco.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -957,30 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Document.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="119" column="49" lean-forward="false" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/LogService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="116" lean-forward="false" selection-start-line="22" selection-start-column="116" selection-end-line="22" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/info.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -989,45 +980,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/UserRepository.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="97" column="48" lean-forward="true" selection-start-line="89" selection-start-column="8" selection-end-line="97" selection-end-column="48" />
-          <folding>
-            <marker date="1485092275000" expanded="true" signature="1074:1116" ph="insert into users... " />
-            <marker date="1485092275000" expanded="true" signature="1394:1527" ph="select users... users" />
-            <marker date="1485092275000" expanded="true" signature="1948:1964" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1965" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1978" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="1948:1981" ph="update users... " />
-            <marker date="1485092275000" expanded="true" signature="2285:2302" ph="delete from " />
-            <marker date="1485092275000" expanded="true" signature="2285:2303" ph="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repository/AbstractRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/DBService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="135" column="35" lean-forward="false" selection-start-line="135" selection-start-column="35" selection-end-line="135" selection-end-column="35" />
-          <folding>
-            <marker date="1485116068000" expanded="true" signature="1041:1062" ph="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1042,66 +998,137 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="242">
           <caret line="34" column="38" lean-forward="false" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/FlowRepository.php">
+    <entry file="file://$PROJECT_DIR$/repository/AbstractRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <marker date="1485106775000" expanded="true" signature="388:424" ph="select * fro... flows" />
-            <marker date="1485106775000" expanded="true" signature="606:642" ph="select * fro... flows" />
-            <marker date="1485106775000" expanded="true" signature="883:919" ph="select * fro... flows" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/FluxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        <state relative-caret-position="60">
+          <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
+    <entry file="file://$PROJECT_DIR$/model/Document.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-          <folding>
-            <marker date="1485116095000" expanded="true" signature="495:518" ph="select * fro... documents" />
-            <marker date="1485116095000" expanded="true" signature="972:996" ph="select users... users" />
-            <marker date="1485116095000" expanded="true" signature="1622:1644" ph="delete from " />
-            <marker date="1485116095000" expanded="true" signature="2041:2087" ph="insert into documents... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="435">
+          <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/DocumentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="332">
+          <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/LogService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="74" lean-forward="false" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/info.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/DBService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="127" column="38" lean-forward="false" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
+          <folding>
+            <marker date="1485125193000" expanded="true" signature="1041:1062" ph="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Flux.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="132" lean-forward="true" selection-start-line="39" selection-start-column="132" selection-end-line="39" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding>
+            <marker date="1485122271000" expanded="true" signature="1074:1116" ph="insert into users... " />
+            <marker date="1485122271000" expanded="true" signature="1712:1746" ph="select * fro... roles" />
+            <marker date="1485122271000" expanded="true" signature="2153:2286" ph="select users... users" />
+            <marker date="1485122271000" expanded="true" signature="2707:2723" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2724" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2737" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="2707:2740" ph="update users... " />
+            <marker date="1485122271000" expanded="true" signature="3044:3061" ph="delete from " />
+            <marker date="1485122271000" expanded="true" signature="3044:3062" ph="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/FluxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="50" column="73" lean-forward="true" selection-start-line="50" selection-start-column="73" selection-end-line="50" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/FluxRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="138" column="5" lean-forward="false" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
+          <folding>
+            <marker date="1485125422000" expanded="true" signature="1255:1295" ph="select * fro... flux_status" />
+            <marker date="1485125422000" expanded="true" signature="2267:2308" ph="insert into flux... " />
+            <marker date="1485125422000" expanded="true" signature="2573:2640" ph="insert into flux_documents... " />
+            <marker date="1485125422000" expanded="true" signature="2935:3062" ph="select flux.... flux" />
+            <marker date="1485125422000" expanded="true" signature="2935:3064" ph="select flux.... flux" />
+            <marker date="1485125422000" expanded="true" signature="2935:3137" ph="select flux.... flux" />
+            <marker date="1485125422000" expanded="true" signature="2935:3184" ph="select flux.... flux" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/DocumentRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-313">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1485125600000" expanded="true" signature="791:815" ph="select users... users" />
+            <marker date="1485125600000" expanded="true" signature="1441:1463" ph="delete from " />
+            <marker date="1485125600000" expanded="true" signature="2071:2117" ph="insert into documents... " />
+          </folding>
         </state>
       </provider>
     </entry>

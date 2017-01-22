@@ -32,14 +32,9 @@ class DocumentController extends BaseController
                     ));
                 }
 
-                $this->docRepo->insert(array(
-                    'id_user' => $this->user->getId(),
-                    'name' => $name,
-                    'location' => $location,
-                    'created_at' => date("Y-m-d H:i:s")
-                ));
+                $document = new Document($this->user->getId(), $name, $location);
 
-                // LogService::info('Upload complete ' . $name . ' ' . $location);
+                $this->docRepo->insert($document);
 
                 return $this->response(array(
                     'status' => 'ok'
@@ -83,6 +78,7 @@ class DocumentController extends BaseController
     public function deleteAction($documentId)
     {
         try {
+
             $document = $this->docRepo->get(array(
                 'id' => $documentId
             ))[0];
