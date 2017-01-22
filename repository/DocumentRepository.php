@@ -8,7 +8,7 @@
 
 include_once MODEL_FOLDER . 'Document.php';
 
-class DocumentRepository
+class DocumentRepository implements AbstractRepository
 {
 
     protected $dbService;
@@ -48,4 +48,23 @@ class DocumentRepository
     }
 
 
+    public function create($data = array())
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function get($filter = array())
+    {
+        // TODO: Implement get() method.
+    }
+
+    public function update($where = array(), $data = array())
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete($where = array())
+    {
+        // TODO: Implement delete() method.
+    }
 }
