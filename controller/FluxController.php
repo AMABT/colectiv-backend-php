@@ -86,11 +86,9 @@ class FluxController extends BaseController
     {
         $result = array();
 
-        $this->user = $this->userRepo->getUserById(1);
-
         try {
 
-            $where = array('id_user_init' => 1);
+            $where = array('id_user_init' => $this->user->getId());
 
             if ($status !== null) {
 
@@ -114,7 +112,7 @@ class FluxController extends BaseController
         return $this->response($result);
     }
 
-    public function getPending()
+    public function getPendingAction()
     {
         $result = array();
 
@@ -130,6 +128,8 @@ class FluxController extends BaseController
 
                 $result[] = $this->fluxToArray($f);
             }
+
+            LogService::info($result);
 
         } catch (Exception $e) {
             // pass
@@ -259,6 +259,7 @@ class FluxController extends BaseController
 
             $idStatus = $this->fluxRepo->getFluxStatusId($status);
 
+            // TODO update flux history too
             $this->fluxRepo->update(array(
                 'id' => $flux->getId()
             ), array(
@@ -304,11 +305,18 @@ class FluxController extends BaseController
     {
         $flux = $f->toArray();
 
-        $userInit = $this->userRepo->getUserById($f->getIdUserInit());
-        $role = $this->userRepo->getRoleById($f->getIdRoleCurrent());
+        try {
 
-        $flux['user_init'] = $userInit->getUsername();
-        $flux['role_current'] = $role['name'];
+            $userInit = $this->userRepo->getUserById($f->getIdUserInit());
+            $role = $this->userRepo->getRoleById($f->getIdRoleCurrent());
+
+            $flux['user_init'] = $userInit->getUsername();
+            $flux['role_current'] = $role['name'];
+
+        } catch (Exception $e) {
+            // pass
+        }
+
 
         return $flux;
     }

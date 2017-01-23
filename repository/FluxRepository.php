@@ -83,9 +83,7 @@ class FluxRepository extends AbstractRepository
     {
         if ($data instanceof Flux) {
 
-            if ($data instanceof Flux) {
-                $data = $this->fluxToArray($data);
-            }
+            $data = $this->fluxToArray($data);
         }
 
         $cols = implode(", ", array_keys($data));
