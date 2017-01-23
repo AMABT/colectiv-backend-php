@@ -86,9 +86,11 @@ class FluxController extends BaseController
     {
         $result = array();
 
+        $this->user = $this->userRepo->getUserById(1);
+
         try {
 
-            $where = array('id_user_init' => $this->user->getId());
+            $where = array('id_user_init' => 1);
 
             if ($status !== null) {
 
@@ -247,8 +249,12 @@ class FluxController extends BaseController
                 if ($userRole['id_parent'] === null) {
 
                     $status = FluxStatus::Approved;
-                    $id_parent = $userRole['id'];
                 }
+            }
+
+            if ($userRole['id_parent'] === null) {
+
+                $id_parent = $userRole['id'];
             }
 
             $idStatus = $this->fluxRepo->getFluxStatusId($status);
