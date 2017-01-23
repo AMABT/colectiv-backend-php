@@ -152,16 +152,16 @@ class DBService
 
     /**
      * @param $sql string example: UPDATE MyGuests SET lastname='Doe' WHERE id=2
-     * @return integer number of records UPDATED successfully
-     * @throws PDOException
+     * @param array $params
+     * @return int number of records UPDATED successfully
      */
-    public function update($sql)
+    public function update($sql, $params = array())
     {
         // Prepare statement
         $stmt = $this->conn->prepare($sql);
 
         // execute the query
-        $stmt->execute();
+        $stmt->execute($params);
 
         return $stmt->rowCount();
     }

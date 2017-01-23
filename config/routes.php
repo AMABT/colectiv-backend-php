@@ -5,12 +5,12 @@ include_once MODEL_FOLDER . 'User.php';
 // Pattern -> controller::method
 $config['routes'] = array(
     'home' => 'Home:Home', // default / route, REQUIRED
-    'dashboard/:section' => array(
-        'logged' => true,
-        'role' => Role::SuperAdmin,
-        'action' => 'Home:getUsers',
-        'method' => 'POST'
-    ),
+//    'dashboard/:section' => array(
+//        'logged' => true,
+//        'role' => Role::SuperAdmin,
+//        'action' => 'Home:getUsers',
+//        'method' => 'POST'
+//    ),
     'login' => array(
         'action' => 'Home:login',
         'method' => 'POST'
@@ -65,6 +65,11 @@ $config['routes'] = array(
         'method' => 'GET',
         'logged' => true
     ),
+    'flux/documents/:fluxId' => array(
+        'action' => 'Flux:getDocuments',
+        'method' => 'GET',
+        'logged' => true
+    ),
     'flux/update/:fluxId' => array(
         'action' => 'Flux:update',
         'method' => 'PUT',
@@ -73,6 +78,16 @@ $config['routes'] = array(
     'flux/delete/:fluxId' => array(
         'action' => 'Flux:delete',
         'method' => 'DELETE',
+        'logged' => true
+    ),
+    'flux/accept/:fluxId' => array(
+        'action' => 'Flux:accept',
+        'method' => 'POST',
+        'logged' => true
+    ),
+    'flux/reject/:fluxId' => array(
+        'action' => 'Flux:reject',
+        'method' => 'POST',
         'logged' => true
     )
 

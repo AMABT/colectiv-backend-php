@@ -148,7 +148,7 @@ class FluxController extends BaseController
                 'flux.id' => $fluxId
             ))[0];
 
-            $flux = $flux->toArray();
+            $flux = $this->fluxToArray($flux);
             $flux['documents'] = array();
 
             try {
@@ -169,6 +169,27 @@ class FluxController extends BaseController
 
             return $this->errorResponse('Flux not found');
         }
+    }
+
+    public function getDocumentsAction($fluxId)
+    {
+        $result = [];
+
+        try {
+
+            $documents = $this->docRepo->getDocumentsByFlux($fluxId);
+
+            foreach ($documents as $doc) {
+                $result[] = $doc->toArray();
+            }
+
+
+        } catch (Exception $e) {
+            // no documents for this flux
+        }
+
+        return $this->response($result);
+
     }
 
     public function updateAction($fluxId)
@@ -202,11 +223,65 @@ class FluxController extends BaseController
         }
     }
 
+    public function acceptAction($fluxId, $type = 'accept')
+    {
+        try {
+
+            $flux = $this->fluxRepo->get(array(
+                'flux.id' => $fluxId
+            ))[0];
+
+            $userRole = $this->userRepo->getRole($this->user->getRole());
+
+            if ($userRole['id'] != $flux->getIdRoleCurrent()) {
+                throw new Exception("You don't have rights to update this flux");
+            }
+
+            $id_parent = $userRole['id_parent'];
+
+            if ($type != 'accept') {
+
+                $status = FluxStatus::Rejected;
+
+            } else {
+                $status = FluxStatus::Pending;
+
+                if ($userRole['id_parent'] === null) {
+
+                    $status = FluxStatus::Approved;
+                    $id_parent = $userRole['id'];
+                }
+            }
+
+            $idStatus = $this->fluxRepo->getFluxStatusId($status);
+
+            $this->fluxRepo->update(array(
+                'id' => $flux->getId()
+            ), array(
+                'id_status' => $idStatus,
+                'id_role_current' => $id_parent
+            ));
+
+            return $this->response(array(
+                'status' => 'Success'
+            ));
+
+        } catch (Exception $e) {
+
+            return $this->errorResponse('Accept failed');
+        }
+    }
+
+    public function rejectAction($fluxId)
+    {
+        return $this->acceptAction($fluxId, 'reject');
+    }
+
     public function deleteAction($fluxId)
     {
         try {
 
-            $this->userRepo->delete(array(
+            $this->fluxRepo->delete(array(
                 'id' => $fluxId,
                 'id_user_init' => $this->user->getId()
             ));

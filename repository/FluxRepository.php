@@ -83,14 +83,9 @@ class FluxRepository extends AbstractRepository
     {
         if ($data instanceof Flux) {
 
-            $data = array(
-                'name' => $data->getName(),
-                'description' => $data->getDescription(),
-                'id_user_init' => $data->getIdUserInit(),
-                'id_role_current' => $data->getIdRoleCurrent(),
-                'created_at' => $data->getCreatedAt(),
-                'id_status' => $this->getFluxStatusId($data->getStatus())
-            );
+            if ($data instanceof Flux) {
+                $data = $this->fluxToArray($data);
+            }
         }
 
         $cols = implode(", ", array_keys($data));
@@ -140,11 +135,45 @@ class FluxRepository extends AbstractRepository
 
     public function update($where = array(), $data = array())
     {
-        // TODO: Implement update() method.
+        if ($data instanceof Flux) {
+            $data = $this->fluxToArray($data);
+        }
+
+        $where_string = self::whereToString($where);
+        $update = self::updateToString($data);
+
+        $query = "update flux set " . $update . " " . $where_string;
+
+        return $this->dbService->update($query, array_values($where));
     }
 
     public function delete($where = array())
     {
-        // TODO: Implement delete() method.
+        if (empty($where)) {
+            throw new Exception("Where clause empty, can't delete all users");
+        }
+
+        $where = self::whereToString($where);
+
+        $query = "delete from flux " . $where;
+
+        return $this->dbService->delete($query);
     }
+
+    /**
+     * @param $flux Flux
+     * @return array
+     */
+    protected function fluxToArray($flux)
+    {
+        return array(
+            'name' => $flux->getName(),
+            'description' => $flux->getDescription(),
+            'id_user_init' => $flux->getIdUserInit(),
+            'id_role_current' => $flux->getIdRoleCurrent(),
+            'created_at' => $flux->getCreatedAt(),
+            'id_status' => $this->getFluxStatusId($flux->getStatus())
+        );
+    }
+
 }
