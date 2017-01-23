@@ -89,6 +89,28 @@ $config['routes'] = array(
         'action' => 'Flux:reject',
         'method' => 'POST',
         'logged' => true
+    ),
+    'user/create' => array(
+        'action' => 'User:create',
+        'method' => 'POST',
+        //'logged'=>true
+    ),
+    'user/get/:userId' => array(
+        'action' => 'User:getOne',
+        'method' => 'POST',
+        '//logged' => true,
+    ),
+    'user/update/:userId' => array(
+        'action' => 'User:update',
+        'method' => 'PUT',
+        'logged' => true,
+        'role' => Role::SuperAdmin,
+    ),
+    'user/delete/:userId' => array(
+        'action' => 'User:delete',
+        'method' => 'PUT',
+        'logged' => true,
+        'role' => Role::SuperAdmin,
     )
 
 );

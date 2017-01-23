@@ -32,13 +32,12 @@ class User
      * @param $email
      * @param $role
      */
-    public function __construct($id = null, $name = null, $password = null, $email = null, $role = null)
+    public function __construct($name = null, $password = null, $email = null, $role = null)
     {
         // if it's not called from PDO
-        if ($this->id === null && $id !== null) {
-            $this->id = $id;
+        if ($name !== null) {
             $this->username = $name;
-            $this->password = $password;
+            $this->password = md5($password);
             $this->email = $email;
             $this->role = $role;
         }
