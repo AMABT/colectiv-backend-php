@@ -24,8 +24,6 @@ class FluxController extends BaseController
 
             $request = $this->request();
 
-            LogService::info($request);
-
             $idParentRole = null;
 
             try {
